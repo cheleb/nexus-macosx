@@ -1,0 +1,1 @@
+This repo explain step by step how to install nexus OSS repository manager on Mac OS X.

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GroupName</key>
+	<string>nexus</string>
+        <key>KeepAlive</key>
+        <false/>
+	<key>Label</key>
+	<string>com.sonatype.nexus</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/nexus/current/bin/nexus</string>
+		<string>start-launchd</string>
+	</array>
+	<key>Sockets</key>
+	<dict>
+		<key>Listener</key>
+		<dict>
+			<key>SockNodeName</key>
+			<string>localhost</string>
+			<key>SockPassive</key>
+			<true/>
+			<key>SockProtocol</key>
+			<string>TCP</string>
+			<key>SockServiceName</key>
+			<string>8888</string>
+		</dict>
+	</dict>
+	<key>StandardErrorPath</key>
+	<string>/opt/nexus/nexus.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/opt/nexus/nexus.out.log</string>
+	<key>UserName</key>
+	<string>nexus</string>
+</dict>
+</plist>

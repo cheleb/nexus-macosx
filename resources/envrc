@@ -1,0 +1,31 @@
+#
+# Check if a localhost Nexus is configured
+# And launchd it if needed. 
+#
+if [ -a /tmp/nexus.usedby ]; then
+ export SBT_OPTS="-Dsbt.override.build.repos=true"
+ echo "👌 Nexus is already started ... ["
+ grep  nexus-maven-public  ~/.sbt/repositories
+ echo "]"
+ export NEXUS=http://localhost:8081
+else
+ SBT_NEXUS_ENTRIES=`grep -c  nexus ~/.sbt/repositories`
+ if [ $SBT_NEXUS_ENTRIES -gt 0 ]; then
+  echo
+  echo "💪 Congratulation, your are using a repository manager to save the planet! 💪" 
+  echo
+  echo -n "✨ Want to start Nexus [y/N]❓:"
+  echo
+  read -s -t 4 REPLY
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    export SBT_OPTS="-Dsbt.override.build.repos=true"
+    echo "🚀 Stating Nexus ..."
+    nc -w 2 localhost 8888
+    echo $USER >> /tmp/nexus.usedby
+    export NEXUS=http://localhost:8081
+  else 
+    echo "🙀 Not stating Nexus, don't try to build any things ..."  
+  fi
+ fi
+fi

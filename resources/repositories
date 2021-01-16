@@ -1,0 +1,6 @@
+[repositories]
+  local
+  maven-local
+  nexus-maven-public: http://localhost:8081/repository/maven-public/
+  nexus-ivy-public: http://localhost:8081/repository/ivy-public/, [organization]/[module]/(scala_[scalaVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  nexus-ivy-sbt-plugin-releases: http://localhost:8081/repository/ivy-public/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]

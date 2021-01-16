@@ -1,0 +1,12 @@
+allprojects {
+  ext.RepoConfigurator = {
+    maven {
+      url "http://localhost:8081/repository/maven-public/"
+    }
+    ivy {
+      url "http://localhost:8081/repository/ivy-public/"
+    }
+  }
+  buildscript.repositories RepoConfigurator
+  repositories RepoConfigurator
+}
